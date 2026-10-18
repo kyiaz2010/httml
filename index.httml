@@ -2,122 +2,83 @@
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ДПМ: оружие и безопасность</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1c2415;--bg2:#27311d;--card:#2f3b22;--khaki:#8f9560;--sand:#e3dcb4;--rust:#d2641f;--ink:#f1eed9;--mute:#b7b894;
+:root{--bg:#1c2415;--card:#2f3b22;--khaki:#8f9560;--sand:#e3dcb4;--rust:#d2641f;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'PT Sans',Arial,sans-serif;
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--sand);font-family:Oswald,Impact,sans-serif;
 background-image:radial-gradient(ellipse 380px 220px at 12% 18%,#2d3a1f 0 60%,transparent 62%),radial-gradient(ellipse 300px 260px at 82% 30%,#3a4a28 0 55%,transparent 57%),radial-gradient(ellipse 420px 200px at 40% 70%,#222c18 0 60%,transparent 62%),radial-gradient(ellipse 260px 240px at 90% 85%,#33401f 0 55%,transparent 57%);background-attachment:fixed}
-h1,h2,h3{font-family:Oswald,Impact,sans-serif;margin:0;letter-spacing:.02em}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;display:flex;gap:6px;overflow-x:auto;padding:10px 16px;background:#141a0eee;border-bottom:2px solid var(--rust)}
-nav a{color:var(--sand);text-decoration:none;padding:6px 14px;border:1px solid var(--khaki);white-space:nowrap;font-family:Oswald,sans-serif}
-nav a:hover,nav a:focus-visible{background:var(--rust);color:#fff;outline:none}
-.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:40px 20px}
-.hero h1{font-size:clamp(38px,8vw,92px);line-height:1;color:var(--sand);text-shadow:4px 4px 0 #0008}
-.hero p{max-width:620px;margin:18px auto 36px;color:var(--mute)}
-.scene{width:150px;height:150px;margin:0 auto;perspective:700px}
-.cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:spin 16s linear infinite}
-.cube:hover{animation-play-state:paused}
-.cube a{position:absolute;inset:0;display:grid;place-items:center;font:700 20px Oswald,sans-serif;color:var(--sand);text-decoration:none;background:#3b4a2add;border:3px solid var(--sand)}
-.cube a:nth-child(1){transform:translateZ(75px)}.cube a:nth-child(2){transform:rotateY(90deg) translateZ(75px)}
-.cube a:nth-child(3){transform:rotateY(180deg) translateZ(75px)}.cube a:nth-child(4){transform:rotateY(-90deg) translateZ(75px)}
-@keyframes spin{to{transform:rotateX(-14deg) rotateY(360deg)}}
-.cube{transform:rotateX(-14deg)}
-.hint{margin-top:46px;font-size:14px;color:var(--mute)}
-section{max-width:1180px;margin:0 auto;padding:56px 18px}
-.bh{display:flex;align-items:baseline;gap:16px;border-bottom:3px solid var(--khaki);padding-bottom:10px;margin-bottom:28px}
-.bh h2{font-size:clamp(28px,4.5vw,46px);color:var(--sand)}.bh span{color:var(--rust);font:700 18px Oswald}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:26px;perspective:1200px}
-.card{background:var(--card);border:2px solid var(--khaki);border-left:8px solid var(--rust);padding:18px;transform-style:preserve-3d;transition:transform .15s,box-shadow .2s;box-shadow:0 10px 24px #0007;display:flex;flex-direction:column;gap:10px}
-.card.wide{grid-column:1/-1}
-.who{display:flex;align-items:center;gap:8px;font:500 14px Oswald;color:var(--rust)}
-.who b{color:var(--sand);border-bottom:1px dashed var(--khaki);padding:0 4px;min-width:90px;outline:none}
-.who b:focus{background:#0005}
-.card h3{font-size:24px;color:var(--sand);transform:translateZ(30px)}
-.card ul{margin:0;padding-left:20px}.card li{margin:3px 0}
-button{font:500 15px Oswald,sans-serif;background:transparent;color:var(--sand);border:1px solid var(--khaki);padding:7px 12px;cursor:pointer;align-self:flex-start}
-button:hover,button:focus-visible{background:var(--rust);border-color:var(--rust);color:#fff;outline:none}
-.speech{display:none;background:#0004;padding:12px;border-left:3px solid var(--khaki);color:var(--ink)}
-.speech.on{display:block}
-table{width:100%;border-collapse:collapse;font-size:15px}th,td{border:1px solid var(--khaki);padding:6px 8px;text-align:left}th{background:#0005;color:var(--sand)}
-.tw{overflow-x:auto}
-.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;perspective:800px}
-.flip{height:96px;position:relative;transform-style:preserve-3d;transition:transform .6s;cursor:pointer;padding:0;border:0;background:none;align-self:auto}
-.flip.on{transform:rotateY(180deg)}
-.flip i{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:6px;font-style:normal;backface-visibility:hidden;border:1px solid var(--khaki);font-size:14px;line-height:1.25}
-.flip i:first-child{background:#1b2312;font:500 16px Oswald;color:var(--sand)}
-.flip i:last-child{transform:rotateY(180deg);background:var(--rust);color:#fff}
-ol.steps{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-ol.steps li{display:flex;gap:10px;align-items:center;padding:7px 10px;background:#0004;border:1px solid var(--khaki);cursor:pointer;counter-increment:s}
-ol.steps li:before{content:counter(s);display:grid;place-items:center;min-width:28px;height:28px;background:var(--rust);font:700 15px Oswald;color:#fff}
-ol.steps li.done{opacity:.5;text-decoration:line-through}
-ol.steps{counter-reset:s}
-.note{font-size:13px;color:var(--mute);text-align:center;padding:30px 16px 50px}
-@media(prefers-reduced-motion:reduce){.cube{animation:none;transform:rotateX(-14deg) rotateY(-30deg)}.flip{transition:none}.card{transition:none}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}}
+header{text-align:center;padding:44px 16px 10px}
+h1{margin:0;font-size:clamp(40px,9vw,96px);line-height:1;text-shadow:4px 4px 0 #0008;letter-spacing:.04em}
+header i{display:block;width:120px;height:6px;margin:16px auto 0;background:var(--rust)}
+section{max-width:1200px;margin:0 auto;padding:30px 16px}
+h2{margin:0 0 20px;font-size:clamp(26px,4vw,42px);border-bottom:3px solid var(--khaki);padding-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;perspective:1200px}
+.tile{position:relative;background:var(--card);border:2px solid var(--khaki);border-bottom:6px solid var(--rust);padding:10px 10px 14px;cursor:pointer;color:var(--sand);font:inherit;text-align:center;box-shadow:0 10px 22px #0008;transition:transform .15s}
+.tile:focus-visible{outline:3px solid var(--rust)}
+.tile svg{display:block;width:100%;height:auto;background:radial-gradient(#3d4e2b,#182012);border:1px solid #0006}
+.tile span{display:block;margin-top:10px;font-size:22px;font-weight:700;letter-spacing:.03em}
+.tile b{position:absolute;top:-10px;left:-10px;width:30px;height:30px;display:grid;place-items:center;background:var(--rust);color:#fff;font-size:15px;border-radius:50%}
+#lb{position:fixed;inset:0;z-index:20;background:#0c1008f2;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+#lb.on{display:flex}
+#lb .big{width:min(94vw,160vh,1000px);background:radial-gradient(#3d4e2b,#182012);border:3px solid var(--khaki);box-shadow:0 20px 60px #000}
+#lb .big svg{display:block;width:100%;height:auto}
+#lb p{margin:0;font-size:clamp(26px,5vw,48px);font-weight:700}
+.nb{position:fixed;top:50%;width:52px;height:64px;margin-top:-32px;background:#0008;border:2px solid var(--khaki);color:var(--sand);font-size:34px;cursor:pointer}
+.nb:hover,.nb:focus-visible{background:var(--rust);outline:none}
+#pv{left:8px}#nx{right:8px}#cl{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:10px;width:48px;height:48px;background:#0008;border:2px solid var(--khaki);color:var(--sand);font-size:26px;cursor:pointer}
+footer{height:50px}
+@media(prefers-reduced-motion:reduce){.tile{transition:none}}
 </style></head><body>
-<nav aria-label="Блоки"><a href="#b1">Безопасность</a><a href="#b2">Автомат</a><a href="#b3">Устройство</a><a href="#b4">Итоги</a></nav>
-<header class="hero"><div>
-<div class="scene"><div class="cube"><a href="#b1">Безопасность</a><a href="#b2">АК</a><a href="#b3">Устройство</a><a href="#b4">Итоги</a></div></div>
-<h1 style="margin-top:50px">Оружие и безопасность</h1>
-<p>Допризывная подготовка молодёжи. Меры безопасности, автомат Калашникова, его устройство и итоги. 25 докладчиков, 25 карточек.</p>
-<div class="hint">Нажмите на грань куба, чтобы перейти к блоку. В каждой карточке есть кнопка «Текст выступления».</div>
-</div></header>
-<main id="app"></main>
-
-<p class="note">Цифры даны по учебным пособиям. Перед выступлением сверьте их с вашим учебником ДПМ.</p>
+<svg width="0" height="0" style="position:absolute"><defs>
+<marker id="g" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#7d7"/></marker>
+<marker id="r" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#d2641f"/></marker>
+<marker id="s" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#e3dcb4"/></marker></defs></svg>
+<header><h1>ДПМ</h1><i></i></header>
+<main id="app"></main><footer></footer>
+<div id="lb" role="dialog" aria-modal="true"><button id="cl" aria-label="Закрыть">✕</button><button class="nb" id="pv" aria-label="Назад">‹</button><button class="nb" id="nx" aria-label="Вперёд">›</button><div class="big"></div><p></p></div>
 <script>
-const B=[
-{id:'b1',n:'Блок 1',t:'Меры безопасности при обращении с оружием',c:[
-{t:'Зачем нужны правила безопасности',p:['Оружие не прощает ошибок','Беда случается из-за невнимательности','Правила написаны по чужим ошибкам','Выполнять их должен каждый'],s:'Оружие создано для защиты, но в неумелых руках оно опасно. Почти все несчастные случаи происходят не из-за поломки, а из-за невнимательности человека. Поэтому правила безопасности нужно знать наизусть и выполнять всегда, даже если кажется, что оружие не заряжено.'},
-{t:'Четыре золотых правила',p:['Любое оружие считать заряженным','Ствол только в безопасную сторону','Палец вне спусковой скобы до команды','Перед выстрелом знать, что за целью'],s:'Первое: любое оружие считается заряженным, пока вы сами не проверили обратное. Второе: ствол направляется только в безопасную сторону, никогда на людей. Третье: палец лежит вдоль ствольной коробки и не касается спуска, пока нет команды стрелять. Четвёртое: перед выстрелом убедитесь, что за целью никого нет.'},
-{t:'Что запрещено',p:['Наводить на людей, даже в шутку','Оставлять оружие без присмотра','Передавать посторонним','Разбирать и чистить с магазином','Стрелять без команды'],s:'Запреты простые, но именно их нарушают чаще всего. Нельзя наводить оружие на людей, даже в шутку и даже если оно разряжено. Нельзя оставлять его без присмотра и отдавать другим без разрешения руководителя. Нельзя стрелять без команды и чистить оружие, пока не отделён магазин и не проверен патронник.'},
-{t:'Получение и сдача оружия',p:['Оружие выдаёт руководитель','Отделить магазин','Проверить патронник','Осмотреть и доложить о неисправностях','Сдавать в том же порядке'],s:'Оружие выдаётся и принимается только под контролем руководителя. Получив автомат, сначала отделяем магазин и проверяем патронник. Затем осматриваем оружие: нет ли трещин, грязи, поломок. Если что-то не так, сразу докладываем. Сдаём оружие в таком же порядке.'},
-{t:'Как убедиться, что автомат не заряжен',p:['Ствол в безопасную сторону','Отделить магазин','Оттянуть затворную раму назад','Осмотреть патронник','Отпустить раму, контрольный спуск по команде'],s:'Это самое важное действие перед любой работой с автоматом. Ствол держим в безопасную сторону. Отделяем магазин, оттягиваем затворную раму назад и смотрим в патронник. Убедившись, что он пуст, отпускаем раму и делаем контрольный спуск, но только когда руководитель разрешил.'},
-{t:'Хранение и переноска',p:['Носить на ремне, ствол вверх','Хранить в оружейной комнате','Магазин хранить отдельно','Беречь от влаги и ударов'],s:'Автомат носят на ремне, ствол направлен вверх и вперёд, чтобы случайно не задеть людей. Хранить оружие нужно в оружейной комнате, в сухом месте, без магазина. Удары и сырость портят механизмы и могут привести к неисправности.'},
-{t:'Поведение на стрельбище',p:['Слушать команды руководителя','Заряжать только на огневом рубеже','Стрелять только по команде','Ствол всегда к мишеням','Не выходить за линию без разрешения'],s:'На стрельбище главное дисциплина. Всё выполняется по команде руководителя стрельб. Заряжаем оружие только на огневом рубеже. Ствол всегда направлен в сторону мишеней. Если прозвучала команда «Стой», стрельба немедленно прекращается, а оружие ставится на предохранитель.'},
-{t:'Если что-то пошло не так',p:['Выстрела нет: не поворачиваться стволом к людям','Сообщить руководителю','Ничего не делать самому','При травме сразу звать на помощь'],s:'Если после нажатия на спуск выстрела нет, не нужно торопиться и заглядывать в ствол. Оставайтесь на месте, ствол направлен на мишени, и громко доложите руководителю. Дальше действуйте только по его команде. При любой травме сразу зовите помощь.'}]},
-{id:'b2',n:'Блок 2',t:'Назначение и боевые свойства автомата Калашникова',c:[
-{t:'Назначение автомата',p:['Личное оружие для поражения живой силы','Стреляет одиночными и очередями','Лёгкий, простой и надёжный','Широко распространён в мире'],s:'Автомат Калашникова это личное стрелковое оружие. Он предназначен для поражения живой силы противника. Автомат лёгкий, простой в обращении и стреляет как одиночными выстрелами, так и очередями. Благодаря надёжности он стал одним из самых известных видов оружия в мире.'},
-{t:'История создания',p:['Конструктор: Михаил Тимофеевич Калашников','1949: автомат принят на вооружение','1959: АКМ, модернизированный','1974: АК-74 под патрон 5,45 мм'],s:'Автомат создал конструктор Михаил Тимофеевич Калашников. В 1949 году его приняли на вооружение. В 1959 году появился модернизированный АКМ, он легче и удобнее. В 1974 году приняли АК-74 под новый, малокалиберный патрон 5,45 мм.'},
-{t:'Боевые свойства',type:'table',s:'Смотрите на таблицу. У АКМ калибр 7,62 мм, у АК-74 калибр 5,45 мм. Пуля АК-74 летит быстрее, около 900 метров в секунду. Прицельная дальность у обоих до 1000 метров, магазин вмещает 30 патронов, а теоретическая скорострельность около 600 выстрелов в минуту.'},
-{t:'Патрон и калибр',p:['Калибр это диаметр канала ствола','АКМ: патрон 7,62×39 мм','АК-74: патрон 5,45×39 мм','Патрон: пуля, гильза, порох, капсюль'],s:'Калибр показывает диаметр канала ствола в миллиметрах. Патрон состоит из пули, гильзы, пороха и капсюля. Пуля это то, что вылетает из ствола. Гильза хранит порох, капсюль воспламеняет его при ударе, и пороховые газы выталкивают пулю.'},
-{t:'Виды огня и скорострельность',p:['Одиночный огонь: один выстрел на одно нажатие','Автоматический: очередями, пока нажат спуск','Переводчик огня справа на коробке','Теоретическая: около 600 выстр./мин','Практическая: ≈40 одиночным, ≈100 очередями'],s:'Автомат может стрелять одиночными выстрелами и очередями. Вид огня выбирается переводчиком справа на ствольной коробке: верхнее положение это предохранитель, среднее автоматический огонь, нижнее одиночный. Практическая скорострельность ниже теоретической, потому что нужно целиться и менять магазины.'},
-{t:'Дальность стрельбы',p:['Прицельная дальность до 1000 м','Прямой выстрел по грудной фигуре: АКМ ≈350 м, АК-74 ≈440 м','Дальше пуля летит по дуге','Прицел выставляют по дальности до цели'],s:'Прицельная дальность автомата до 1000 метров. Прямым выстрелом называется такой, при котором пуля на всём пути не поднимается выше цели. По грудной фигуре у АКМ он около 350 метров, у АК-74 около 440. На большей дистанции пуля падает, поэтому прицел выставляют по дальности.'},
-{t:'Почему автомат надёжен',p:['Простое устройство, мало деталей','Работает в пыли и грязи','Не боится мороза и жары','Легко разбирается и чистится'],s:'Секрет надёжности в простоте. Деталей в автомате немного, а между подвижными частями есть зазоры, поэтому пыль, песок и мороз не мешают его работе. Автомат быстро разбирается и чистится даже в полевых условиях.'},
-{t:'АКМ и АК-74',p:['АКМ: 7,62 мм, пуля тяжелее','АК-74: 5,45 мм, пуля быстрее','У АК-74 дульный тормоз-компенсатор','Магазин АК-74 пластиковый','Принцип работы одинаковый'],s:'Главное отличие в патроне: у АКМ он крупнее, у АК-74 меньше, поэтому пуля летит быстрее, а отдача мягче. У АК-74 на стволе стоит дульный тормоз-компенсатор, а магазин пластиковый. Устройство и принцип работы у обоих автоматов одинаковые.'}]},
-{id:'b3',n:'Блок 3',t:'Назначение устройств, частей и механизмов автомата',c:[
-{t:'Главные части автомата',type:'flip',f:[['Ствол со ствольной коробкой','Направляет пулю, соединяет части'],['Крышка коробки','Защищает механизмы'],['Возвратный механизм','Возвращает раму вперёд'],['Затворная рама','Двигает затвор'],['Затвор','Досылает патрон, запирает канал'],['Газовая трубка','Направляет газовый поршень'],['Цевьё','Защищает руки от ожога'],['Магазин','Хранит и подаёт патроны'],['Принадлежность','Для чистки и ухода']],s:'Автомат состоит из девяти главных частей. Нажимайте на карточки, чтобы увидеть назначение каждой. Запомнить их проще всего по порядку: ствол со ствольной коробкой, крышка, возвратный механизм, затворная рама, затвор, газовая трубка, цевьё, магазин и принадлежность.'},
-{t:'Ствол, ствольная коробка, прицел',p:['Ствол направляет пулю, нарезы закручивают её','Коробка соединяет части и вмещает механизмы','Прицел: мушка и прицельная планка'],s:'Ствол направляет полёт пули. Внутри него винтовые нарезы, они закручивают пулю и делают полёт устойчивым. Ствольная коробка соединяет все части автомата и вмещает его механизмы. Прицельное приспособление состоит из мушки и прицельной планки и служит для наводки на цель.'},
-{t:'Крышка, возвратный механизм, рама',p:['Крышка защищает от пыли и грязи','Возвратный механизм: пружина с направляющим стержнем','Затворная рама несёт затвор и газовый поршень'],s:'Крышка закрывает механизмы сверху и защищает их от пыли и грязи. Возвратный механизм это пружина, она возвращает затворную раму в переднее положение после выстрела. Затворная рама соединена с газовым поршнем и приводит в движение затвор.'},
-{t:'Затвор, газовая трубка, цевьё',p:['Затвор досылает патрон и запирает канал','Газовая трубка направляет поршень','Цевьё защищает руки от ожога'],s:'Затвор досылает патрон в патронник, запирает канал ствола при выстреле и выбрасывает стреляную гильзу. Газовая трубка находится над стволом, в ней движется газовый поршень. Цевьё закрывает ствол и газовую трубку, чтобы стрелок не обжёг руки.'},
-{t:'Магазин и спусковой механизм',p:['Магазин: 30 патронов и пружина подачи','Спусковой механизм производит выстрел','Принадлежность: для чистки и смазки'],s:'Магазин вмещает 30 патронов и подаёт их вверх с помощью пружины. Ударно-спусковой механизм находится в ствольной коробке: при нажатии на спуск курок бьёт по бойку, и происходит выстрел. Принадлежность это набор для чистки и смазки автомата.'},
-{t:'Как работает автоматика',type:'steps',steps:['Выстрел: пуля идёт по стволу, газы давят на неё','Часть газов попадает в газовую трубку на поршень','Рама идёт назад, затвор открывается, гильза вылетает','Пружина возвращает раму вперёд, новый патрон досылается'],s:'Автоматика работает за счёт пороховых газов. При выстреле часть газов через отверстие в стволе попадает на поршень и отбрасывает затворную раму назад. Затвор открывается, и стреляная гильза вылетает. Пружина возвращает раму вперёд, затвор берёт новый патрон и запирает канал. Автомат готов к следующему выстрелу.'},
-{t:'Неполная разборка',type:'steps',steps:['Отделить магазин','Проверить патронник','Вынуть пенал с принадлежностью','Отделить шомпол','Снять крышку ствольной коробки','Снять возвратный механизм','Снять затворную раму с затвором','Отделить затвор от рамы','Снять газовую трубку со ствольной накладкой'],s:'Неполная разборка нужна для чистки и смазки. Сначала отделяем магазин и проверяем патронник. Затем по порядку снимаем пенал, шомпол, крышку, возвратный механизм, раму с затвором, затвор и газовую трубку. Нажимайте на шаги на экране, чтобы отмечать пройденные.'},
-{t:'Сборка и уход за оружием',p:['Сборка в обратном порядке','Проверить работу механизмов','Чистить после стрельбы','Смазывать тонким слоем','Хранить в сухом месте'],s:'Сборка идёт в порядке, обратном разборке. Когда автомат собран, проверьте работу механизмов. Чистить оружие нужно после каждой стрельбы, а смазывать тонким слоем. Хранить автомат нужно в сухом месте, чтобы он не заржавел.'}]},
-{id:'b4',n:'Итоги',t:'Главное, что нужно запомнить',c:[
-{t:'Итоги',p:['Любое оружие считается заряженным','Ствол только в безопасную сторону, палец вне скобы','Автомат Калашникова прост, надёжен, работает на отводе газов','Девять главных частей и порядок разборки знать наизусть','Вопросы к аудитории: назовите три правила безопасности'],s:'Подведём итоги. Первое: любое оружие считается заряженным, а ствол всегда смотрит в безопасную сторону. Второе: автомат Калашникова прост, надёжен и работает за счёт отвода пороховых газов. Третье: нужно знать девять главных частей и порядок неполной разборки. Спасибо за внимание, готовы ответить на вопросы.'}]}];
-const T=[['Параметр','АКМ','АК-74'],['Калибр, мм','7,62','5,45'],['Масса без магазина, кг','около 3,1','около 3,3'],['Магазин, патронов','30','30'],['Скорость пули, м/с','около 715','около 900'],['Прицельная дальность, м','до 1000','до 1000'],['Скорострельность, выстр./мин','около 600','около 600']];
-let names={};try{names=JSON.parse(localStorage.getItem('dpm-names')||'{}')}catch(e){}
-let n=0;const app=document.getElementById('app');
-B.forEach(b=>{const s=document.createElement('section');s.id=b.id;
-s.innerHTML=`<div class="bh"><span>${b.n}</span><h2>${b.t}</h2></div><div class="grid"></div>`;
-const g=s.querySelector('.grid');
-b.c.forEach(c=>{n++;const k=n;const d=document.createElement('article');d.className='card'+(c.type?' wide':'');
-let body='';
-if(c.p)body='<ul>'+c.p.map(x=>`<li>${x}</li>`).join('')+'</ul>';
-if(c.type=='table')body='<div class="tw"><table>'+T.map((r,i)=>'<tr>'+r.map(x=>i?`<td>${x}</td>`:`<th>${x}</th>`).join('')+'</tr>').join('')+'</table></div>';
-if(c.type=='flip')body='<div class="flips">'+c.f.map(f=>`<button class="flip" aria-label="${f[0]}"><i>${f[0]}</i><i>${f[1]}</i></button>`).join('')+'</div>';
-if(c.type=='steps')body='<ol class="steps">'+c.steps.map(x=>`<li>${x}</li>`).join('')+'</ol>';
-d.innerHTML=`<div class="who">Докладчик ${k}</div><h3>${c.t}</h3>${body}<button class="sb">Текст выступления</button><div class="speech">${c.s}</div>`;
-g.appendChild(d)});
-app.appendChild(s)});
-document.addEventListener('click',e=>{const t=e.target.closest('.sb');if(t)t.nextElementSibling.classList.toggle('on');
-const f=e.target.closest('.flip');if(f)f.classList.toggle('on');
-const l=e.target.closest('.steps li');if(l)l.classList.toggle('done')});
-document.addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset.k;if(k){names[k]=e.target.textContent;try{localStorage.setItem('dpm-names',JSON.stringify(names))}catch(x){}}});
-document.querySelectorAll('.card').forEach(c=>{
-c.addEventListener('mousemove',e=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches||e.target.closest('.flip'))return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*7}deg) rotateX(${-y*7}deg)`});
-c.addEventListener('mouseleave',()=>c.style.transform='')});
+const G='<g fill="#cfd2b5"><rect x="12" y="30" width="86" height="9"/><rect x="66" y="39" width="10" height="22"/><rect x="4" y="32" width="14" height="14"/><path d="M44 39q4 14 18 0" stroke="#cfd2b5" stroke-width="3" fill="none"/></g>';
+const PT=[['stock','<polygon points="20,98 205,112 205,176 45,222 20,205" fill="#8a5a2b"/>'],['recv','<rect x="200" y="108" width="265" height="56" rx="4" fill="#33382f"/>'],['cover','<path d="M205 108V92Q210 84 230 84H440L450 108Z" fill="#454b3f"/>'],['barrel','<rect x="465" y="120" width="400" height="13" fill="#2b2f29"/><rect x="800" y="98" width="9" height="24" fill="#2b2f29"/><rect x="852" y="114" width="26" height="25" fill="#2b2f29"/>'],['hand','<rect x="470" y="106" width="190" height="62" rx="8" fill="#8a5a2b"/>'],['gas','<rect x="490" y="92" width="200" height="16" rx="6" fill="#5b6150"/><rect x="690" y="100" width="40" height="30" fill="#2b2f29"/>'],['sight','<rect x="450" y="70" width="46" height="16" fill="#555b4c"/><rect x="470" y="60" width="8" height="12" fill="#555b4c"/>'],['grip','<polygon points="335,164 378,164 366,240 326,240" fill="#7a4e24"/>'],['trig','<path d="M378 164Q380 200 412 196L420 164" fill="none" stroke="#8a8f78" stroke-width="5"/>'],['mag','<path d="M418 164H480Q505 225 520 275L462 285Q450 225 418 164Z" fill="#6b5a2f"/>'],['bolt','<rect x="225" y="134" width="215" height="24" rx="4" fill="rgba(255,255,255,.08)" stroke="#e3dcb4" stroke-width="3" stroke-dasharray="7 5"/>']];
+const AK=(k,dy=0,tf='translate(6 38) scale(.21)')=>`<g transform="${tf}">`+PT.map(([n,m])=>k==null?m:n==k?`<g transform="translate(0 ${dy})" style="stroke:#d2641f;stroke-width:5">${m}</g>`:`<g opacity=".28">${m}</g>`).join('')+'</g>';
+const gl=(x,y,r,s,inner)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">${inner}</g>`;
+const T=(x,y,s,t,c='#e3dcb4')=>`<text x="${x}" y="${y}" font-size="${s}" fill="${c}" text-anchor="middle" font-family="Oswald,Impact,sans-serif" font-weight="700">${t}</text>`;
+const cart=(x,w,c)=>`<path d="M${x} 44q${w/2} -22 ${w} 0V62H${x}Z" fill="#b87333"/><rect x="${x}" y="62" width="${w}" height="46" fill="${c}"/><rect x="${x-2}" y="108" width="${w+4}" height="6" fill="#aaa"/>`;
+const dots=(y,n)=>Array.from({length:n},(_,i)=>`<circle cx="${40+i*17}" cy="${y}" r="7" fill="#e3dcb4"/>`).join('')+`<line x1="${50+n*17}" y1="${y}" x2="185" y2="${y}" stroke="#d2641f" stroke-width="4" marker-end="url(#r)"/>`;
+const I=[
+['Безопасность',[
+['Палец вне скобы',gl(28,22,0,1.2,G+'<ellipse cx="46" cy="25" rx="22" ry="4.5" fill="#e8b88a"/>')+'<circle cx="165" cy="32" r="20" fill="#2e7d32"/><path d="M155 32l8 9 14-17" stroke="#fff" stroke-width="5" fill="none"/>'],
+['Не наводить на людей','<circle cx="165" cy="40" r="12" fill="#e3dcb4"/><rect x="155" y="54" width="20" height="52" fill="#e3dcb4"/>'+gl(20,52,0,1,G)+'<circle cx="100" cy="70" r="58" fill="none" stroke="#e33" stroke-width="9"/><line x1="58" y1="112" x2="142" y2="28" stroke="#e33" stroke-width="9"/>'],
+['Ствол вверх',gl(40,112,-70,1.1,G)+'<line x1="165" y1="125" x2="165" y2="25" stroke="#7d7" stroke-width="7" marker-end="url(#g)"/>'],
+['Магазин долой',AK('mag',75)+'<line x1="104" y1="104" x2="104" y2="132" stroke="#7d7" stroke-width="5" marker-end="url(#g)"/>'],
+['Проверь патронник',AK('bolt')+'<circle cx="76" cy="68" r="27" fill="rgba(255,255,255,.1)" stroke="#e3dcb4" stroke-width="6"/><line x1="96" y1="88" x2="120" y2="118" stroke="#e3dcb4" stroke-width="8"/>'],
+['Команда «Стоп»','<polygon points="72,12 128,12 168,52 168,88 128,128 72,128 32,88 32,52" fill="#c62828" stroke="#fff" stroke-width="5"/>'+T(100,82,32,'СТОП','#fff')],
+['Хранение','<path d="M78 70V50a22 22 0 0 1 44 0V70" stroke="#cfd2b5" stroke-width="11" fill="none"/><rect x="58" y="68" width="84" height="58" rx="8" fill="#c9a227"/><circle cx="100" cy="92" r="8" fill="#222"/><rect x="97" y="96" width="6" height="16" fill="#222"/>']]],
+['Автомат Калашникова',[
+['Автомат Калашникова',AK(null,0,'translate(6 36) scale(.21)')+'<path d="M20 112h160" stroke="#d2641f" stroke-width="3" stroke-dasharray="3 4"/>'],
+['Калибр',cart(50,26,'#d9c27a')+cart(120,18,'#c9b46a')+T(63,132,16,'7,62')+T(129,132,16,'5,45')],
+['Одиночный и очередями',dots(45,1)+dots(100,5)],
+['Дальность 1000 м','<path d="M30 105Q100 0 170 105" stroke="#e3dcb4" stroke-width="3" fill="none" stroke-dasharray="6 5"/>'+gl(8,92,0,.3,G)+'<circle cx="172" cy="105" r="20" fill="#fff"/><circle cx="172" cy="105" r="13" fill="#c62828"/><circle cx="172" cy="105" r="6" fill="#fff"/>'+T(100,132,20,'1000 м')],
+['Пыль, вода, мороз','<text x="40" y="90" font-size="44" text-anchor="middle">🏜️</text><text x="100" y="90" font-size="44" text-anchor="middle">💧</text><text x="160" y="90" font-size="44" text-anchor="middle">❄️</text>'+'<path d="M30 112h140" stroke="#7d7" stroke-width="5"/>'],
+['АКМ и АК-74',AK(null,0,'translate(4 6) scale(.19)')+AK(null,0,'translate(4 74) scale(.19)')+T(190,52,16,'АКМ')+T(185,120,16,'АК-74')]]],
+['Устройство автомата',[
+['Ствол',AK('barrel')],['Магазин',AK('mag')],['Затвор и рама',AK('bolt')],
+['Газовая трубка',AK('gas')+'<line x1="110" y1="48" x2="152" y2="48" stroke="#d2641f" stroke-width="4" marker-end="url(#r)"/>'],
+['Порядок разборки',[1,2,3,4].map((n,i)=>`<circle cx="${35+i*43}" cy="70" r="17" fill="#d2641f"/>`+T(35+i*43,77,22,n,'#fff')+(i<3?`<line x1="${54+i*43}" y1="70" x2="${58+i*43}" y2="70" stroke="#e3dcb4" stroke-width="4" marker-end="url(#s)"/>`:'')).join('')+'<path d="M30 112h140" stroke="#8f9560" stroke-width="3" stroke-dasharray="5 4"/>'],
+['Чистка и смазка','<line x1="25" y1="95" x2="150" y2="95" stroke="#e3dcb4" stroke-width="6"/><rect x="150" y="86" width="30" height="18" fill="#8a5a2b"/><path d="M100 18q-16 24 0 34q16-10 0-34Z" fill="#d2641f"/><path d="M40 60l16 16M56 60l-16 16" stroke="#7d7" stroke-width="5"/>']]],
+['Итоги',[
+['Главное запомнить','<path d="M100 12L160 32V74Q160 112 100 130Q40 112 40 74V32Z" fill="#4d5a30" stroke="#e3dcb4" stroke-width="5"/><path d="M72 72l20 20 38-44" stroke="#7d7" stroke-width="11" fill="none"/>'],
+['Вопросы?','<rect x="30" y="14" width="140" height="84" rx="14" fill="#e3dcb4"/><polygon points="66,98 66,126 98,98" fill="#e3dcb4"/>'+T(100,84,76,'?','#1c2415')]]]];
+const app=document.getElementById('app'),all=[];let n=0;
+I.forEach(([h,list])=>{const s=document.createElement('section');s.innerHTML=`<h2>${h}</h2><div class="grid"></div>`;
+list.forEach(([cap,svg])=>{const i=all.length;n++;const svgs=`<svg viewBox="0 0 200 140" role="img" aria-label="${cap}">${svg}</svg>`;all.push([cap,svgs]);
+const b=document.createElement('button');b.className='tile';b.innerHTML=`<b>${n}</b>${svgs}<span>${cap}</span>`;b.onclick=()=>open(i);
+b.onmousemove=e=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const r=b.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;b.style.transform=`rotateY(${x*12}deg) rotateX(${-y*12}deg)`};b.onmouseleave=()=>b.style.transform='';
+s.querySelector('.grid').appendChild(b)});app.appendChild(s)});
+const lb=document.getElementById('lb');let cur=0;
+function open(i){cur=(i+all.length)%all.length;lb.querySelector('.big').innerHTML=all[cur][1];lb.querySelector('p').textContent=cur+1+'. '+all[cur][0];lb.classList.add('on')}
+document.getElementById('cl').onclick=()=>lb.classList.remove('on');
+document.getElementById('pv').onclick=()=>open(cur-1);document.getElementById('nx').onclick=()=>open(cur+1);
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key=='Escape')lb.classList.remove('on');if(e.key=='ArrowLeft')open(cur-1);if(e.key=='ArrowRight')open(cur+1)});
 </script></body></html>
